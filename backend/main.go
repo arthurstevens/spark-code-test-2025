@@ -1,6 +1,9 @@
 package main
 
-import "net/http"
+import (
+	"encoding/json"
+	"net/http"
+)
 
 type Todo struct {
 	Title       string `json:"title"`
@@ -20,9 +23,14 @@ func ToDoListHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
 		handleGetList(w, r)
-	case http.MethodPost:
-		handleAddTodo(w, r)
+	// case http.MethodPost:
+	// 	handleAddTodo(w, r)
 	default:
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
+}
+
+func handleGetList(w http.ResponseWriter, r *http.Request) {
+	encoder := json.NewEncoder(w)
+	encoder.Encode(todos)
 }
