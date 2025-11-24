@@ -10,7 +10,7 @@ type Todo struct {
 	Description string `json:"description"`
 }
 
-var todos []Todo
+var todos = []Todo{}
 
 func main() {
 	http.HandleFunc("/", ToDoListHandler)
