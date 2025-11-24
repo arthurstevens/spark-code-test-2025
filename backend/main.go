@@ -2,6 +2,11 @@ package main
 
 import "net/http"
 
+type Todo struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
+}
+
 func main() {
 	// Your code here
 }
