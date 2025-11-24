@@ -40,6 +40,7 @@
   .todo-title {
     font-size: 28px;
     font-weight: bold;
+    overflow-wrap: anywhere;
 
     margin: 0px;
     margin-bottom: 5px;
@@ -48,6 +49,7 @@
   .todo-description {
     display: flex;
     margin: 0px;
+    overflow-wrap: anywhere;
 
     font-size: 20px;
     color: #ddd;
