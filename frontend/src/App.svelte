@@ -64,8 +64,8 @@
 
   <h2 class="todo-list-form-header">Add a Todo</h2>
   <form class="todo-list-form" onsubmit={addTodo}>
-    <input placeholder="Title" name="title" bind:value={title} />
-    <input placeholder="Description" name="description" bind:value={description} />
+    <input placeholder="Title" name="title" bind:value={title} required />
+    <input placeholder="Description" name="description" bind:value={description} required />
     <button>Add Todo</button>
   </form>
 </main>
