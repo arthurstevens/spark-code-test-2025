@@ -17,5 +17,12 @@ func main() {
 func ToDoListHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 
-	// Your code here
+	switch r.Method {
+	case http.MethodGet:
+		handleGetList(w, r)
+	case http.MethodPost:
+		handleAddTodo(w, r)
+	default:
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
+	}
 }
