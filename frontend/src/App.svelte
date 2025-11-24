@@ -22,6 +22,29 @@
     }
   }
 
+  async function addTodo(e: SubmitEvent) {
+    e.preventDefault();
+
+    const response = await fetch("http://localhost:8080/", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({title, description})
+    });
+
+    if (response.status !== 200) {
+      console.error("Error adding todo. Response status not 200");
+      return;
+    }
+
+    // Update client todos
+    const todo = await response.json();
+    todos = [...todos, todo];
+
+    // Reset form state variables
+    title = "";
+    description = "";
+  }
+
   // Initially fetch todos on page load
   $effect(() => {
     fetchTodos();
@@ -40,7 +63,7 @@
   </div>
 
   <h2 class="todo-list-form-header">Add a Todo</h2>
-  <form class="todo-list-form">
+  <form class="todo-list-form" onsubmit={addTodo}>
     <input placeholder="Title" name="title" bind:value={title} />
     <input placeholder="Description" name="description" bind:value={description} />
     <button>Add Todo</button>
