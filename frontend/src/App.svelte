@@ -3,6 +3,10 @@
   import type { TodoItem } from "./lib/types";
 
   let todos: TodoItem[] = $state([]);
+  
+  // Form state variables for Todo
+  let title = $state("");
+  let description = $state("");
 
   async function fetchTodos() {
     try {
@@ -37,8 +41,8 @@
 
   <h2 class="todo-list-form-header">Add a Todo</h2>
   <form class="todo-list-form">
-    <input placeholder="Title" name="title" />
-    <input placeholder="Description" name="description" />
+    <input placeholder="Title" name="title" bind:value={title} />
+    <input placeholder="Description" name="description" bind:value={description} />
     <button>Add Todo</button>
   </form>
 </main>
