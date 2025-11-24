@@ -31,6 +31,7 @@ func ToDoListHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleGetList(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
 	encoder := json.NewEncoder(w)
 	encoder.Encode(todos)
 }
