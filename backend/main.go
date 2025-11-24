@@ -10,7 +10,8 @@ type Todo struct {
 var todos []Todo
 
 func main() {
-	// Your code here
+	http.HandleFunc("/", ToDoListHandler)
+	http.ListenAndServe(":8080", nil)
 }
 
 func ToDoListHandler(w http.ResponseWriter, r *http.Request) {
